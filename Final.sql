@@ -2,14 +2,14 @@
 
 CREATE DATABASE restaurantes;
 use restaurantes;
-
 -- c
+
 -- Creacion de tablas 
 
 CREATE TABLE usuario(
     id_usuario int(100) PRIMARY KEY,
-    nombre_usuario varchar(30),
-    cedula int(10)
+    nombre_usuario varchar(30) NOT NULL,
+    cedula int(10) NOT NULL
 );
 
 CREATE TABLE pedido(
@@ -25,9 +25,9 @@ CREATE TABLE factura(
     id_factura int(100) PRIMARY KEY,
     id_pedido int(100),
     fecha date,
-    subtotal int(6),
-    propina int(6),
-    total int(6),
+    subtotal DECIMAL(10, 2) NOT NULL,
+    propina DECIMAL(10, 2) NOT NULL,
+    total DECIMAL(10, 2) NOT NULL,
     FOREIGN KEY (id_pedido) REFERENCES pedido(id_pedido)
 );
 
@@ -35,21 +35,21 @@ CREATE TABLE pago(
     id_pago INT(100) PRIMARY KEY,
     id_factura INT(10),
     metodo_pago VARCHAR(20),
-    valor int (6),
+    valor DECIMAL(10, 2) NOT NULL,
     FOREIGN KEY (id_factura) REFERENCES factura(id_factura)
 );
 
 
 CREATE TABLE tipo_producto(
     id_tipo_producto INT(100) PRIMARY KEY,
-    categoria VARCHAR(20)
+    categoria VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE producto(
     id_producto INT(100) PRIMARY KEY,
     id_tipo_producto INT(100),
-    nombre VARCHAR(20),
-    cantidad_disponible INT (20),
+    nombre VARCHAR(20) NOT NULL,
+    cantidad_disponible INT (20) NOT NULL,
     
     FOREIGN KEY (id_tipo_producto) REFERENCES tipo_producto(id_tipo_producto)
 );
@@ -65,7 +65,7 @@ CREATE TABLE producto_almuerzo_dia(
     id_producto_almuerzo_dia INT(100) PRIMARY KEY,
     id_almuerzo_dia INT(10),
     id_producto INT(10),
-    cantidad_disponible INT(3),	
+    cantidad_disponible INT(3) NOT NULL,		
 
     FOREIGN KEY (id_almuerzo_dia) REFERENCES almuerzo_dia(id_almuerzo_dia),
     FOREIGN KEY (id_producto) REFERENCES producto (id_producto)
@@ -78,6 +78,8 @@ CREATE TABLE menu_personalizado(
     FOREIGN KEY (id_pedido) REFERENCES pedido(id_pedido),
     FOREIGN KEY (id_almuerzo_dia) REFERENCES almuerzo_dia(id_almuerzo_dia)
 );
+
+
 
 
 
