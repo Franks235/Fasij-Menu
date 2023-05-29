@@ -3,7 +3,7 @@
 CREATE DATABASE restaurantes;
 use restaurantes;
 
-
+-- c
 -- Creacion de tablas 
 
 CREATE TABLE usuario(
