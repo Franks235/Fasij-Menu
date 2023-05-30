@@ -1,4 +1,4 @@
--- Creacion de base de datos
+- Creacion de base de datos
 
 CREATE DATABASE restaurantes;
 use restaurantes;
@@ -81,8 +81,6 @@ CREATE TABLE menu_personalizado(
 
 
 
-
-
 -- incercion de datos: 
 
 
@@ -115,7 +113,7 @@ INSERT INTO `pedido`(`id_pedido`, `id_usuario`, `fecha`, `descripcion`) VALUES
     (2,0,'2023-04-25','normal'),
     (3,5,'2023-04-25','sin jugo'),
     (4,4,'2023-04-27','normal'),
-    (5,6,'2023-04-27','sin jugo'),.
+    (5,6,'2023-04-27','sin jugo'),
     (6,8,'2023-04-26','normal'),
     (7,9,'2023-04-28','sin jugo'),
     (8,7,'2023-05-01','normal'),
@@ -414,15 +412,3 @@ FROM almuerzo_dia ad
 JOIN producto_almuerzo_dia pad ON ad.id_almuerzo_dia = pad.id_almuerzo_dia
 JOIN producto p ON pad.id_producto = p.id_producto
 GROUP BY ad.descripcion;
-
-
-
-
-
-
-
-
-
-
-
-
